@@ -1,0 +1,10 @@
+.extra-container{
+    display: inline-block;
+}
+.todo-items-left{
+    display: inline-block;
+}
+.remove-item{
+    display: inline-block;
+   cursor: pointer;
+}

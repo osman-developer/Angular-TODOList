@@ -1,0 +1,37 @@
+<input type="text" class="todo-input" placeholder="things need to be done" [(ngModel)]='todoTitle'
+    (keyup.enter)='addTodo()'  />
+
+<div *ngFor='let todo of todos' class="todo-items">
+    <br>
+    <input type="checkbox" [(ngModel)]="todo.completed"  />
+
+    <div class="todo-items-left" *ngIf="!todo.editable; else show" (dblclick)="editTodo(todo)">
+        {{todo.title}}</div>
+        <ng-template #show>
+            <input type="=text" placeholder="{{todo.title}}" [(ngModel)]='todo.title' (keyup.enter)="doneEdit(todo)"/>
+        </ng-template>
+
+    
+    <div class="remove-item" >
+      <button (click)='deleteTodo(todo.id)'>x</button>  
+    </div>
+</div>
+
+<hr>
+<div class="extra-container">
+    <label><input type="checkbox" (change)='checkAll()' />Check all!</label>
+    {{remainingTodo()}} items left
+</div>
+
+<div class="extra-container2">
+    <div>
+       <button class="Avtive" (click)='showAll()'>All</button>
+        <button class="Avtive" (click)='showActive()'>Active</button>
+        <button class="Avtive"(click)='showCompleted()'>Completed</button>
+        <button class="Avtive" (click)='clearAll()'>Clear</button> 
+  
+    <button [ngClass]="filter==all" (click)='show()'>all</button>
+    <button [ngClass]="filter==active" (click)='show()'>active</button>
+
+    </div>
+</div>
